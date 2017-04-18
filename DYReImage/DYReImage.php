@@ -25,8 +25,8 @@ class DYReImage {
 	 * 
 	 * $option = array(
 	 * 	"type" => "thumbnail",
-	 *  "height" => "sm",
-	 *  "width" => null,
+	 * 	"height" => "sm",
+	 * 	"width" => null,
 	 *	"quality" => 100
 	 * );
 	 * 
