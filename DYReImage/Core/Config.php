@@ -30,62 +30,53 @@
  */
 namespace DYReImage\Core;
 
+/**
+ * The Config class
+ */
 class Config {
 	
+	/**
+	 * The default options for the resizing.
+	 * 
+	 * @var array
+	 */
+	public static $defaultOption = array(
+			"height" => "xs",
+			"width" => "auto",
+			"quality" => 75
+	);
+	
+	/**
+	 * The required image values.
+	 * 
+	 * @var array
+	 */
 	public static $RequiredImage = array(
 			
-			/**
-			 * the custom image configuration
-			 * @var array
-			 */
-			"custom" => array(
-					
-					// height of the image in pixels
-					"height" => array(
-							"default" => 100,
-							"xs" => 100,	//extra small
-							"sm" => 200,	//small
-							"md" => 300,	//medium
-							"lg" => 400,	//large
-							"xl" => 500		//extra large
-					),
-					
-					// width will be in proportion to the height
-					"width" => "auto",
-					
-					// quality of the thumbnail image
-					"quality" => 75,
-					
-					// allowed file extensions
-					"allowedextension" => array("jpg", "jpeg", "png")
+			// height of the image in pixels
+			"height" => array(
+					"xs" => 100,	//extra small
+					"sm" => 200,	//small
+					"md" => 400,	//medium
+					"lg" => 800,	//large
+					"xl" => 1600	//extra large
 			),
 			
-			/**
-			 * the thumbnail configurations
-			 * @var array
-			 */
-			"thumbnail" => array(
+			// width will be in proportion to the height
+			"width" => array(
+					"auto" => "auto",	//compute width proportional to height
+					"xs" => 100,	//extra small
+					"sm" => 200,	//small
+					"md" => 400,	//medium
+					"lg" => 800,	//large
+					"xl" => 1600	//extra large
+			),
 			
-					// height of the image in pixels
-					"height" => array(
-							"default" => 100,
-							"xs" => 100,	//extra small
-							"sm" => 200,	//small
-							"md" => 300,	//medium
-							"lg" => 400,	//large
-							"xl" => 500		//extra large
-					),
-					
-					// width will be in proportion to the height
-					"width" => "auto",
-					
-					// quality of the thumbnail image
-					"quality" => 75,
-						
-					// allowed file extensions
-					"allowedextension" => array("jpg", "jpeg", "png")
+			// quality of the thumbnail image
+			"quality" => 75,
 				
-			)
+			// allowed file extensions
+			"allowedextension" => array("jpg", "jpeg", "png")
 			
 	);
 	
