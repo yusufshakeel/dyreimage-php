@@ -35,7 +35,7 @@ $source = __DIR__ . '/image/sample.jpeg';
 $destination = __DIR__ . '/image/output.png';
 $option = array(
 		"height" => 200,
-		"width" => 400,
+		"width" => "auto",
 		"quality" => 80
 );
 
