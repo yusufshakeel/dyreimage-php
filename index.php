@@ -4,7 +4,7 @@
  * author: yusuf shakeel
  * github: https://github.com/yusufshakeel/dyreimage
  * date: 12-feb-2014 wed
- * description: this file contains the index page.
+ * description: This file contains the index page.
  * 
  * MIT License
  *

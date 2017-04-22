@@ -4,7 +4,7 @@
  * author: yusuf shakeel
  * github: https://github.com/yusufshakeel/dyreimage
  * date: 12-feb-2014 wed
- * description: this file contains the image resizing class.
+ * description: This file contains the DYReImage class.
  * 
  * MIT License
  *
@@ -137,6 +137,30 @@ class DYReImage {
 	}
 	
 	/**
+	 * This function will set the source.
+	 * @param string $source
+	 */
+	public function setSource($source) {
+		$this->source = $source;
+	}
+	
+	/**
+	 * This function will set the destination.
+	 * @param string $destination
+	 */
+	public function setDestination($destination) {
+		$this->destination = $destination;
+	}
+	
+	/**
+	 * This will set the option.
+	 * @param array $option
+	 */
+	public function setOption($option = array()) {
+		$this->option = $option;
+	}
+	
+	/**
 	 * This function will initialize the variables.
 	 */
 	private function init() {
@@ -157,6 +181,7 @@ class DYReImage {
 			
 			// get destination file detail
 			$this->requiredImage['pathinfo'] = pathinfo($this->destination);
+			$this->requiredImage['destination'] = $this->destination;
 			
 		}
 		
@@ -212,6 +237,12 @@ class DYReImage {
 		
 	}
 	
+	/**
+	 * This function will resize the image.
+	 * Returns true if successful.
+	 * 
+	 * @return boolean
+	 */
 	public function resize() {
 		
 		// resize image
@@ -264,6 +295,7 @@ class DYReImage {
 		imagedestroy($resizeImage);
 		imagedestroy($sourceImage);
 		
+		return true;
 	}
 	
 }

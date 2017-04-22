@@ -1,6 +1,12 @@
 # dyreimage-php
 This is an image resizing project.
 
+# Status
+
+[![Build Status](https://travis-ci.org/yusufshakeel/dyreimage-php.svg?branch=master)](https://travis-ci.org/yusufshakeel/dyreimage-php)
+
+
+
 
 # Requirement
 DYReImage requires the following:
