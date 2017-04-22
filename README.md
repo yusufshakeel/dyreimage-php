@@ -8,6 +8,7 @@ This is an image resizing project.
 # Getting started
 - [Download the latest release.](https://github.com/yusufshakeel/dyreimage-php/releases)
 - Clone the repo: `git clone https://github.com/yusufshakeel/dyreimage-php.git`
+- Install with [Bower](https://bower.io): `bower install dyreimage-php`
 
 # Requirement
 DYReImage requires the following:
@@ -16,6 +17,57 @@ DYReImage requires the following:
 
 # Brief history
 I was working on an [Image Processing Project](https://github.com/yusufshakeel/Java-Image-Processing-Project) when I was in college back in 2014. Created this project back then and then decided to make some more changes and put it on GitHub.
+
+# What's inside
+```
+dyreimage-php/
+├── image/
+│   └── sample.jpeg
+├── src/
+│   └── DYReImage/
+│       ├── Core/
+│       │   ├── Config.php
+│       │   ├── Helper.php
+│       │   └── Validator.php
+│       ├── autoload.php
+│       └── DYReImage.php
+├── tests/
+└── index.php
+```
+
+# How to use?
+Include the ```DYReImage``` directory which is inside the ```src``` directory in your project. Now to start using it write the following code.
+
+```
+<?php
+require_once 'path/to/DYReImage/autoload.php';
+
+// path of source image file that we want to resize
+$source = 'path/to/image/sample.jpeg';
+
+// path of destination image file
+// resized image will be saved in img directory by the name output.png
+$destination = 'path/to/destination/img/output.png';
+
+// options to resize image
+// required image width = 400, height 200 (in pixels) and quality = 80
+$option = array(
+  "height" => 200,
+  "width" => 400,
+  "quality" => 80
+);
+
+// resize
+try {
+  $obj = new DYReImage\DYReImage($source, $destination, $option);
+  $obj->resize();
+} catch(\Exception $e) {
+  die("Error: " . $e->getMessage());
+}
+?>
+```
+Note! You must have write permission in order to save the resized image in the destination directory.
+
 
 # License
 
