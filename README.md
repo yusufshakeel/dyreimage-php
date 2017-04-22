@@ -3,7 +3,9 @@ This is an image resizing project.
 
 # Status
 
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/yusufshakeel/dyreimage-php)
 [![Build Status](https://travis-ci.org/yusufshakeel/dyreimage-php.svg?branch=master)](https://travis-ci.org/yusufshakeel/dyreimage-php)
+[![npm version](https://img.shields.io/badge/npm-v1.0.0-blue.svg)](https://www.npmjs.com/package/dyreimage-php)
 
 # Documentation
 [Click here for the documentation.](https://www.dyclassroom.com/dyreimage-php/getting-started)
@@ -12,6 +14,7 @@ This is an image resizing project.
 - [Download the latest release.](https://github.com/yusufshakeel/dyreimage-php/releases)
 - Clone the repo: `git clone https://github.com/yusufshakeel/dyreimage-php.git`
 - Install with [Bower](https://bower.io): `bower install dyreimage-php`
+- Install with [npm](https://www.npmjs.com): `npm install dyreimage-php`
 
 # Requirement
 DYReImage requires the following:

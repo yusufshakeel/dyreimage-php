@@ -1,0 +1,27 @@
+{
+  "name": "dyreimage-php",
+  "version": "1.0.0",
+  "description": "This is an image resizing project.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yusufshakeel/dyreimage-php.git"
+  },
+  "keywords": [
+    "php",
+    "image",
+    "resizing"
+  ],
+  "author": "Yusuf Shakeel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yusufshakeel/dyreimage-php/issues"
+  },
+  "homepage": "https://github.com/yusufshakeel/dyreimage-php#readme"
+}
