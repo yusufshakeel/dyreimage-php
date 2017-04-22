@@ -5,6 +5,9 @@ This is an image resizing project.
 
 [![Build Status](https://travis-ci.org/yusufshakeel/dyreimage-php.svg?branch=master)](https://travis-ci.org/yusufshakeel/dyreimage-php)
 
+# Documentation
+[Click here for the documentation.](https://www.dyclassroom.com/dyreimage-php/getting-started)
+
 # Getting started
 - [Download the latest release.](https://github.com/yusufshakeel/dyreimage-php/releases)
 - Clone the repo: `git clone https://github.com/yusufshakeel/dyreimage-php.git`
