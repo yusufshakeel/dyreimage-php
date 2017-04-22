@@ -1,11 +1,11 @@
 <?php
 /**
- * file: index.php
+ * file: bootstrap.php
  * author: yusuf shakeel
  * github: https://github.com/yusufshakeel/dyreimage
  * date: 12-feb-2014 wed
- * description: this file contains the index page.
- * 
+ * description: this is the bootstrap file.
+ *
  * MIT License
  *
  * Copyright (c) 2017 Yusuf Shakeel
@@ -29,30 +29,6 @@
  * SOFTWARE.
  */
 
-require_once 'src/DYReImage/autoload.php';
+date_default_timezone_set('Asia/Kolkata');
 
-$source = __DIR__ . '/image/sample.jpeg';
-$destination = __DIR__ . '/image/output.png';
-$option = array(
-		"height" => 200,
-		"width" => "auto",
-		"quality" => 80
-);
-
-try {
-	
-	$obj = new DYReImage\DYReImage($source, $destination, $option);
-	
-	echo "Source: " . $obj->getSource() . "<br>";
-	echo "Destination: " . $obj->getDestination() . "<br>";
-	echo "Option: " . print_r($obj->getOption()) . "<br>";
-	echo "SourceImageDetail: " . print_r($obj->getSourceDetail()) . "<br>";
-	echo "RequiredImageDetail: " . print_r($obj->getRequiredImageDetail()) . "<br>";
-	
-	$obj->resize();
-	
-	echo "Done!";
-	
-} catch(\Exception $e) {
-	die("Error: " . $e->getMessage());
-}
+require_once __DIR__ . '/../vendor/autoload.php';

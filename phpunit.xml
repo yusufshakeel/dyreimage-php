@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit
-	bootstrap="vendor/autoload.php"
-	stopOnFailure="true"
-	colors="true"
-	verbose="true">
-
-	<testsuites>
-		<testsuite name="DYReImage Tests">
-			<directory>Tests</directory>
-		</testsuite>
-	</testsuites>
-
+        colors="true"
+        stderr="true"
+        convertErrorsToExceptions="true"
+        convertNoticesToExceptions="true"
+        convertWarningsToExceptions="true"
+        stopOnFailure="false"
+        bootstrap="tests/bootstrap.php">
+    <testsuites>
+        <testsuite name="DYReImage Test Suite">
+            <directory>./tests</directory>
+        </testsuite>
+    </testsuites>
 </phpunit>
