@@ -31,10 +31,6 @@
 
 namespace DYReImage\Tests;
 
-use DYReImage\Core\Config as Config;
-use DYReImage\Core\Helper as Helper;
-use DYReImage\Core\Validator as Validator;
-
 class DYReImageTest extends \PHPUnit_Framework_TestCase {
 	
 	private $obj;

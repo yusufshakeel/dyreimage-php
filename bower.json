@@ -5,7 +5,7 @@
     "Yusuf Shakeel"
   ],
   "description": "This is an image resizing project.",
-  "main": "index.php",
+  "main": "src/DYReImage/DYReImage.php",
   "keywords": [
     "php",
     "image resizing"
@@ -15,6 +15,7 @@
     "**/.*",
     "node_modules",
     "bower_components",
+    "composer.json",
     "test",
     "tests"
   ]
