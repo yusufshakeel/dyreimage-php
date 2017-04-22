@@ -118,7 +118,7 @@ class Validator {
 			}
 			
 			// check if height in percentage and in range (0,100] i.e., 0% < height <= 100%
-			if (preg_match("/^(0\.\d{1,}\%)|([1-9][0-9]?(\.\d{1,})?\%)|(100\%)$/", $height) == 1) {
+			if ($height[strlen($height)-1] === "%" && preg_match("/^(0\.\d{1,}\%)|([1-9][0-9]?(\.\d{1,})?\%)|(100\%)$/", $height) == 1) {
 				return array(
 						"type" => "%",
 						"value" => floatval(explode("%", $height)[0])
@@ -182,7 +182,7 @@ class Validator {
 			}
 			
 			// check if width in percentage and in range (0,100] i.e., 0% < width <= 100%
-			if (preg_match("/^(0\.\d{1,}\%)|([1-9][0-9]?(\.\d{1,})?\%)|(100\%)$/", $width) == 1) {
+			if ($width[strlen($width)-1] === "%" && preg_match("/^(0\.\d{1,}\%)|([1-9][0-9]?(\.\d{1,})?\%)|(100\%)$/", $width) == 1) {
 				return array(
 						"type" => "%",
 						"value" => floatval(explode("%", $width)[0])
