@@ -4,7 +4,7 @@ This is an image resizing project.
 
 # Requirement
 DYReImage requires the following:
-* PHP version 5.3 or higher.
+* PHP version 5.4 or higher.
 * GD extension.
 
 # Brief history
