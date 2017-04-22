@@ -29,7 +29,7 @@
  * SOFTWARE.
  */
 
-if (version_compare(PHP_VERSION, '5.4.0', '<')) {
+if (version_compare(PHP_VERSION, '5.5.0', '<')) {
 	throw new Exception('DYReImage requires PHP version 5.3 or higher.');
 }
 
