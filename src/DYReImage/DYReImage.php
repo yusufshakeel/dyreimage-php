@@ -248,15 +248,21 @@ class DYReImage {
 		// resize image
 		switch ($this->sourceDetail['mime']) {
 			case 'image/jpeg':
-				$sourceImage = imagecreatefromjpeg($this->source);
-				$resizeImage = imagecreatetruecolor($this->requiredImage['width'], $this->requiredImage['height']);
+				$sourceImage = imagecreatefromjpeg($this->source) or die('Error: Failed to create a new image from file or URL.');
+				$resizeImage = imagecreatetruecolor($this->requiredImage['width'], $this->requiredImage['height']) or die('Cannot Initialize new GD image stream.');
 				break;
 				
 			case 'image/png':
-				$sourceImage = imagecreatefrompng($this->source);
-				$resizeImage = imagecreatetruecolor($this->requiredImage['width'], $this->requiredImage['height']);
-				imagealphablending($resizeImage, false);
-				imagesavealpha($resizeImage, true);
+				$sourceImage = imagecreatefrompng($this->source) or die('Error: Failed to create a new image from file or URL.');
+				$resizeImage = imagecreatetruecolor($this->requiredImage['width'], $this->requiredImage['height']) or die('Cannot Initialize new GD image stream.');
+				
+				if(imagealphablending($resizeImage, false) === FALSE) {
+					die("Failed to set the blending mode for an image.");
+				}
+				
+				if (imagesavealpha($resizeImage, true) === FALSE) {
+					die("Failed to set the flag to save full alpha channel information when saving PNG images.");
+				}
 				
 				// for png quality must be between 0 to 9
 				if ($this->requiredImage['quality'] > 81) {
@@ -269,7 +275,7 @@ class DYReImage {
 		}
 		
 		// copy image
-		imagecopyresampled(
+		if(imagecopyresampled(
 				$resizeImage,
 				$sourceImage,
 				0,
@@ -280,20 +286,26 @@ class DYReImage {
 				$this->requiredImage['height'],
 				$this->sourceDetail[0],
 				$this->sourceDetail[1]
-				);
+				) === FALSE) {
+					die("Failed to copy and resize part of an image with resampling.");
+				}
 		
 		// save the resized image
 		switch ($this->sourceDetail['mime']) {
 			case 'image/jpeg':
-				imagejpeg($resizeImage, $this->destination, $this->requiredImage['quality']);
+				if (imagejpeg($resizeImage, $this->destination, $this->requiredImage['quality']) === FALSE) {
+					die("Failed to save image to file.");
+				}
 				break;
 				
 			case 'image/png':
-				imagepng($resizeImage, $this->destination, $this->requiredImage['quality']);
+				if (imagepng($resizeImage, $this->destination, $this->requiredImage['quality']) === FALSE) {
+					die("Failed to save image to file.");
+				}
 				break;
 		}
-		imagedestroy($resizeImage);
-		imagedestroy($sourceImage);
+		imagedestroy($resizeImage) or die("Failed to free any memory associated with resized image.");
+		imagedestroy($sourceImage) or die("Failed to free any memory associated with source image.");
 		
 		return true;
 	}
