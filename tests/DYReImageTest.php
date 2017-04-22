@@ -1,11 +1,11 @@
 <?php
 /**
- * file: Config.php
+ * file: DYReImageTest.php
  * author: yusuf shakeel
  * github: https://github.com/yusufshakeel/dyreimage
  * date: 12-feb-2014 wed
- * description: This is the configuration file.
- * 
+ * description: This is the DYReImage test file.
+ *
  * MIT License
  *
  * Copyright (c) 2017 Yusuf Shakeel
@@ -28,56 +28,42 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-namespace DYReImage\Core;
 
-/**
- * The Config class
- */
-class Config {
+namespace DYReImage\Tests;
+
+class DYReImageTest extends \PHPUnit_Framework_TestCase {
 	
-	/**
-	 * The default options for the resizing.
-	 * 
-	 * @var array
-	 */
-	public static $defaultOption = array(
-			"height" => "xs",
-			"width" => "auto",
-			"quality" => 75
-	);
+	private $obj;
 	
-	/**
-	 * The required image values.
-	 * 
-	 * @var array
-	 */
-	public static $RequiredImage = array(
-			
-			// height of the image in pixels
-			"height" => array(
-					"xs" => 100,	//extra small
-					"sm" => 200,	//small
-					"md" => 400,	//medium
-					"lg" => 800,	//large
-					"xl" => 1600	//extra large
-			),
-			
-			// width will be in proportion to the height
-			"width" => array(
-					"auto" => "auto",	//compute width proportional to height
-					"xs" => 100,	//extra small
-					"sm" => 200,	//small
-					"md" => 400,	//medium
-					"lg" => 800,	//large
-					"xl" => 1600	//extra large
-			),
-			
-			// quality of the thumbnail image
-			"quality" => 75,
-				
-			// allowed file extensions
-			"allowedextension" => array("jpg", "jpeg", "png")
-			
-	);
+	private $source;
+	
+	private $destination;
+	
+	private $option;
+	
+	protected function setUp() {
+		
+		$this->source = __DIR__ . '/../image/sample.jpeg';
+		$this->destination = __DIR__ . '/../image/output-test.png';
+		$this->option = array(
+				"height" => 200,
+				"width" => "auto",
+				"quality" => 80
+		);
+		$this->obj = new \DYReImage\DYReImage($this->source, $this->destination, $this->option);
+		
+	}
+	
+	protected function tearDown() {
+		
+		unlink($this->destination);
+		
+	}
+	
+	public function testResize() {
+		
+		$this->assertTrue($this->obj->resize());
+		
+	}
 	
 }

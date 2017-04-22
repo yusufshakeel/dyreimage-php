@@ -4,7 +4,7 @@
  * author: yusuf shakeel
  * github: https://github.com/yusufshakeel/dyreimage
  * date: 12-feb-2014 wed
- * description: this is the bootstrap file.
+ * description: This is the bootstrap file.
  *
  * MIT License
  *

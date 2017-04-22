@@ -4,7 +4,7 @@
  * author: yusuf shakeel
  * github: https://github.com/yusufshakeel/dyreimage
  * date: 12-feb-2014 wed
- * description: this is the helper test file.
+ * description: This is the Helper test file.
  *
  * MIT License
  *
@@ -31,3 +31,90 @@
 
 namespace DYReImage\Tests;
 
+use DYReImage\Core\Config as Config;
+use DYReImage\Core\Helper as Helper;
+
+class HelperTest extends \PHPUnit_Framework_TestCase {
+	
+	/**
+	 * Testing whether the new options generated when no options is set by the user
+	 * is equal to the default options.
+	 */
+	public function testInitOptionWithNoUserOption() {
+		
+		$option = array();
+		$newOption = Helper::initOption($option, Config::$defaultOption);
+		
+		$this->assertTrue($newOption == Config::$defaultOption);
+		
+	}
+	
+	/**
+	 * This function will test if the partially set user option is properly merged
+	 * with the default options.
+	 */
+	public function testPartialUserOption() {
+		
+		$option = array(
+				"height" => 200,
+		);
+		
+		$newOption = Helper::initOption($option, Config::$defaultOption);
+		
+		$expectedOption = array(
+				"height" => 200,
+				"width" => "auto",
+				"quality" => 75
+		);
+		
+		$this->assertTrue($newOption === $expectedOption);
+		
+	}
+	
+	/**
+	 * This will test the computed height for the resized image based on the original width and height
+	 * and the required width of the resized image.
+	 */
+	public function testGetProportionalHeight() {
+		
+		$imageWidth = 1280;
+		$imageHeight = 720;
+		$resizedImageWidth = 240;
+		
+		$computedHeight = Helper::getProportionalHeight($imageWidth, $imageHeight, $resizedImageWidth);
+		
+		$this->assertEquals($computedHeight, 135);
+		
+	}
+	
+	/**
+	 * This will test the computed width for the resized image based on the original width and height
+	 * and the required height of the resized image.
+	 */
+	public function testGetProportionalWidth() {
+		
+		$imageWidth = 1280;
+		$imageHeight = 720;
+		$resizedImageHeight = 135;
+		
+		$computedWidth = Helper::getProportionalWidth($imageWidth, $imageHeight, $resizedImageHeight);
+		
+		$this->assertEquals($computedWidth, 240);
+		
+	}
+	
+	/**
+	 * This will test the computed percentage value.
+	 */
+	public function testGetPercentageValue() {
+		
+		$value = 1000;
+		$percent = 40;
+		
+		$computedValue = Helper::getPercentageValue($value, $percent);
+		
+		$this->assertEquals($computedValue, 400);
+		
+	}
+	
+}

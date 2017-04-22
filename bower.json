@@ -1,0 +1,22 @@
+{
+  "name": "dyreimage-php",
+  "homepage": "https://github.com/yusufshakeel/dyreimage-php",
+  "authors": [
+    "Yusuf Shakeel"
+  ],
+  "description": "This is an image resizing project.",
+  "main": "src/DYReImage/DYReImage.php",
+  "keywords": [
+    "php",
+    "image resizing"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "composer.json",
+    "test",
+    "tests"
+  ]
+}
