@@ -1,11 +1,11 @@
 <?php
 /**
- * file: index.php
+ * file: RedImageTest.php
  * author: yusuf shakeel
  * github: https://github.com/yusufshakeel/dyreimage
  * date: 12-feb-2014 wed
- * description: This file contains the index page.
- * 
+ * description: This is the RedImage test file.
+ *
  * MIT License
  *
  * Copyright (c) 2017 Yusuf Shakeel
@@ -29,30 +29,52 @@
  * SOFTWARE.
  */
 
-require_once 'src/DYReImage/autoload.php';
+namespace DYReImage\Tests\Core;
 
-$source = __DIR__ . '/image/sample.jpeg';
-$destination = __DIR__ . '/image/output.png';
-$option = array(
-		"height" => 200,
-		"width" => "auto",
-		"quality" => 80
-);
-
-try {
+class RedImageTest extends \PHPUnit_Framework_TestCase {
 	
-	$obj = new DYReImage\DYReImage($source, $destination, $option);
+	private $obj;
+	private $source;
+	private $destination;
+	private $option;
 	
-	$obj->resize();
+	protected function setUp() {
+		
+	}
 	
-	echo "Source: " . $obj->getSource() . "<br>";
-	echo "Destination: " . $obj->getDestination() . "<br>";
-	echo "Option: " . print_r($obj->getOption()) . "<br>";
-	echo "SourceImageDetail: " . print_r($obj->getSourceDetail()) . "<br>";
-	echo "RequiredImageDetail: " . print_r($obj->getRequiredImageDetail()) . "<br>";
+	public function tearDown() {
+		unlink($this->destination);
+	}
 	
-	echo "Done!";
+	public function testRedImage_jpeg() {
+		
+		$this->source = __DIR__ . '/../../image/superman.jpg';
+		$this->destination = __DIR__ . '/../../image/output.jpg';
+		$this->option = array(
+				"quality" => 80
+		);
+		
+		$this->obj = new \DYReImage\DYReImage($this->source, $this->destination, $this->option);
+		
+		$this->obj->redImage();
+		
+		$this->assertTrue(file_exists($this->destination));
+		
+	}
 	
-} catch(\Exception $e) {
-	die("Error: " . $e->getMessage());
+	public function testRedImage_png() {
+		
+		$this->source = __DIR__ . '/../../image/superman.png';
+		$this->destination = __DIR__ . '/../../image/output.jpg';
+		$this->option = array(
+				"quality" => 80
+		);
+		
+		$this->obj = new \DYReImage\DYReImage($this->source, $this->destination, $this->option);
+		
+		$this->obj->redImage();
+		
+		$this->assertTrue(file_exists($this->destination));
+		
+	}
 }

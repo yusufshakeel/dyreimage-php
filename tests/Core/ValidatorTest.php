@@ -29,7 +29,7 @@
  * SOFTWARE.
  */
 
-namespace DYReImage\Tests;
+namespace DYReImage\Tests\Core;
 
 use DYReImage\Core\Config as Config;
 use DYReImage\Core\Validator as Validator;

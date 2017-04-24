@@ -33,6 +33,8 @@ namespace DYReImage;
 use DYReImage\Core\Config as Config;
 use DYReImage\Core\Helper as Helper;
 use DYReImage\Core\Validator as Validator;
+use DYReImage\Utilities\Resize as Resize;
+use DYReImage\Utilities\Image as Image;
 
 /**
  * The dy resizing image class
@@ -86,8 +88,6 @@ class DYReImage {
 		$this->source = $source;
 		$this->destination = $destination;
 		$this->option = $option;
-		
-		$this->init();
 		
 	}
 	
@@ -173,6 +173,7 @@ class DYReImage {
 			
 			// get source image file detail
 			$this->sourceDetail = getimagesize($this->source);
+			$this->sourceDetail['source'] = $this->source;
 			
 		}
 		
@@ -185,6 +186,15 @@ class DYReImage {
 			
 		}
 		
+	}
+	
+	/**
+	 * This function will resize the image.
+	 */
+	public function resize() {
+		
+		$this->init();
+		
 		// validate required height
 		$heightDataArr = Validator::validateHeight($this->option['height']);
 		
@@ -195,9 +205,9 @@ class DYReImage {
 		// if height in percentage
 		else if ($heightDataArr['type'] === "%") {
 			$getPercentValue = Helper::getPercentageValue(
-									$this->sourceDetail[1],
-									$heightDataArr['value']
-								);
+					$this->sourceDetail[1],
+					$heightDataArr['value']
+					);
 			$this->requiredImage['height'] = intval($getPercentValue);
 		}
 		
@@ -211,9 +221,9 @@ class DYReImage {
 		// if width in percentage
 		else if ($widthDataArr['type'] === "%") {
 			$getPercentValue = Helper::getPercentageValue(
-									$this->sourceDetail[0],
-									$widthDataArr['value']
-								);
+					$this->sourceDetail[0],
+					$widthDataArr['value']
+					);
 			$this->requiredImage['width'] = intval($getPercentValue);
 		}
 		// if width is auto
@@ -223,91 +233,107 @@ class DYReImage {
 							$this->sourceDetail[0],
 							$this->sourceDetail[1],
 							$this->requiredImage['height']
-						)
+							)
 					);
 		}
 		
 		// validate required quality
 		$qualityDataArr = Validator::validateQuality($this->option['quality']);
 		
-		// if width in exact integer value
+		// if quality in exact integer value
 		if ($qualityDataArr['type'] === "i") {
 			$this->requiredImage['quality'] = $qualityDataArr['value'];
+		}
+		
+		// now resize
+		if (Resize::resize($this->sourceDetail, $this->requiredImage) !== TRUE) {
+			die("Failed to resize image.");
 		}
 		
 	}
 	
 	/**
-	 * This function will resize the image.
-	 * Returns true if successful.
-	 * 
-	 * @return boolean
+	 * This function will create red image.
 	 */
-	public function resize() {
+	public function redImage() {
 		
-		// resize image
-		switch ($this->sourceDetail['mime']) {
-			case 'image/jpeg':
-				$sourceImage = imagecreatefromjpeg($this->source) or die('Error: Failed to create a new image from file or URL.');
-				$resizeImage = imagecreatetruecolor($this->requiredImage['width'], $this->requiredImage['height']) or die('Cannot Initialize new GD image stream.');
-				break;
-				
-			case 'image/png':
-				$sourceImage = imagecreatefrompng($this->source) or die('Error: Failed to create a new image from file or URL.');
-				$resizeImage = imagecreatetruecolor($this->requiredImage['width'], $this->requiredImage['height']) or die('Cannot Initialize new GD image stream.');
-				
-				if(imagealphablending($resizeImage, false) === FALSE) {
-					die("Failed to set the blending mode for an image.");
-				}
-				
-				if (imagesavealpha($resizeImage, true) === FALSE) {
-					die("Failed to set the flag to save full alpha channel information when saving PNG images.");
-				}
-				
-				// for png quality must be between 0 to 9
-				if ($this->requiredImage['quality'] > 81) {
-					$this->requiredImage['quality'] = 81;
-				} else if ($this->requiredImage['quality'] < 9) {
-					$this->requiredImage['quality'] = 9;
-				}
-				$this->requiredImage['quality'] = round($this->requiredImage['quality'] / 9);
-				break;
+		$this->init();
+		
+		// validate required quality
+		$qualityDataArr = Validator::validateQuality($this->option['quality']);
+		
+		// if quality in exact integer value
+		if ($qualityDataArr['type'] === "i") {
+			$this->requiredImage['quality'] = $qualityDataArr['value'];
 		}
 		
-		// copy image
-		if(imagecopyresampled(
-				$resizeImage,
-				$sourceImage,
-				0,
-				0,
-				0,
-				0,
-				$this->requiredImage['width'],
-				$this->requiredImage['height'],
-				$this->sourceDetail[0],
-				$this->sourceDetail[1]
-				) === FALSE) {
-					die("Failed to copy and resize part of an image with resampling.");
-				}
-		
-		// save the resized image
-		switch ($this->sourceDetail['mime']) {
-			case 'image/jpeg':
-				if (imagejpeg($resizeImage, $this->destination, $this->requiredImage['quality']) === FALSE) {
-					die("Failed to save image to file.");
-				}
-				break;
-				
-			case 'image/png':
-				if (imagepng($resizeImage, $this->destination, $this->requiredImage['quality']) === FALSE) {
-					die("Failed to save image to file.");
-				}
-				break;
+		if (Image::redImage($this->sourceDetail, $this->requiredImage) !== TRUE) {
+			die("Failed to create red image.");
 		}
-		imagedestroy($resizeImage) or die("Failed to free any memory associated with resized image.");
-		imagedestroy($sourceImage) or die("Failed to free any memory associated with source image.");
 		
-		return true;
+	}
+	
+	/**
+	 * This function will create green image.
+	 */
+	public function greenImage() {
+		
+		$this->init();
+		
+		// validate required quality
+		$qualityDataArr = Validator::validateQuality($this->option['quality']);
+		
+		// if quality in exact integer value
+		if ($qualityDataArr['type'] === "i") {
+			$this->requiredImage['quality'] = $qualityDataArr['value'];
+		}
+		
+		if (Image::greenImage($this->sourceDetail, $this->requiredImage) !== TRUE) {
+			die("Failed to create green image.");
+		}
+		
+	}
+	
+	/**
+	 * This function will create blue image.
+	 */
+	public function blueImage() {
+		
+		$this->init();
+		
+		// validate required quality
+		$qualityDataArr = Validator::validateQuality($this->option['quality']);
+		
+		// if quality in exact integer value
+		if ($qualityDataArr['type'] === "i") {
+			$this->requiredImage['quality'] = $qualityDataArr['value'];
+		}
+		
+		if (Image::blueImage($this->sourceDetail, $this->requiredImage) !== TRUE) {
+			die("Failed to create blue image.");
+		}
+		
+	}
+	
+	/**
+	 * This function will create grayscale image.
+	 */
+	public function grayscaleImage() {
+		
+		$this->init();
+		
+		// validate required quality
+		$qualityDataArr = Validator::validateQuality($this->option['quality']);
+		
+		// if quality in exact integer value
+		if ($qualityDataArr['type'] === "i") {
+			$this->requiredImage['quality'] = $qualityDataArr['value'];
+		}
+		
+		if (Image::grayscaleImage($this->sourceDetail, $this->requiredImage) !== TRUE) {
+			die("Failed to create grayscale image.");
+		}
+		
 	}
 	
 }

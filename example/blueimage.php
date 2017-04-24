@@ -1,10 +1,10 @@
 <?php
 /**
- * file: index.php
+ * file: blueimage.php
  * author: yusuf shakeel
  * github: https://github.com/yusufshakeel/dyreimage
  * date: 12-feb-2014 wed
- * description: This file contains the index page.
+ * description: This file contains the blueimage page.
  * 
  * MIT License
  *
@@ -29,21 +29,16 @@
  * SOFTWARE.
  */
 
-require_once 'src/DYReImage/autoload.php';
+require_once '../src/DYReImage/autoload.php';
 
-$source = __DIR__ . '/image/sample.jpeg';
-$destination = __DIR__ . '/image/output.png';
-$option = array(
-		"height" => 200,
-		"width" => "auto",
-		"quality" => 80
-);
+$source = __DIR__ . '/../image/rubix-cube.jpg';
+$destination = __DIR__ . '/../image/output.png';
 
 try {
 	
-	$obj = new DYReImage\DYReImage($source, $destination, $option);
+	$obj = new DYReImage\DYReImage($source, $destination);
 	
-	$obj->resize();
+	$obj->blueImage();
 	
 	echo "Source: " . $obj->getSource() . "<br>";
 	echo "Destination: " . $obj->getDestination() . "<br>";

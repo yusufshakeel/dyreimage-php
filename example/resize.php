@@ -1,10 +1,10 @@
 <?php
 /**
- * file: index.php
+ * file: resize.php
  * author: yusuf shakeel
  * github: https://github.com/yusufshakeel/dyreimage
  * date: 12-feb-2014 wed
- * description: This file contains the index page.
+ * description: This file contains the resize page.
  * 
  * MIT License
  *
@@ -29,10 +29,10 @@
  * SOFTWARE.
  */
 
-require_once 'src/DYReImage/autoload.php';
+require_once '../src/DYReImage/autoload.php';
 
-$source = __DIR__ . '/image/sample.jpeg';
-$destination = __DIR__ . '/image/output.png';
+$source = __DIR__ . '/../image/sample.jpeg';
+$destination = __DIR__ . '/../image/output.png';
 $option = array(
 		"height" => 200,
 		"width" => "auto",
