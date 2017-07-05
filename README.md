@@ -36,6 +36,9 @@ dyreimage-php/
 │       │   ├── Config.php
 │       │   ├── Helper.php
 │       │   └── Validator.php
+│       ├── Utilities/
+│       │   ├── Image.php
+│       │   └── Resize.php
 │       ├── autoload.php
 │       └── DYReImage.php
 ├── tests/
@@ -74,6 +77,82 @@ try {
 ?>
 ```
 Note! You must have write permission in order to save the resized image in the destination directory.
+
+
+# Create grayscale image
+```
+require_once 'path/to/DYReImage/autoload.php';
+
+$source = 'path/to/image/sample.jpg';
+$destination = 'path/to/image/output.png';
+$option = array(
+	"quality" => 80
+);
+
+try {
+	$obj = new DYReImage\DYReImage($source, $destination, $option);
+	$obj->grayscaleImage();
+} catch(\Exception $e) {
+	die("Error: " . $e->getMessage());
+}
+```
+
+
+# Create red image
+```
+require_once 'path/to/DYReImage/autoload.php';
+
+$source = 'path/to/image/sample.jpg';
+$destination = 'path/to/image/output.png';
+$option = array(
+	"quality" => 80
+);
+
+try {
+	$obj = new DYReImage\DYReImage($source, $destination, $option);
+	$obj->redImage();
+} catch(\Exception $e) {
+	die("Error: " . $e->getMessage());
+}
+```
+
+
+# Create green image
+```
+require_once 'path/to/DYReImage/autoload.php';
+
+$source = 'path/to/image/sample.jpg';
+$destination = 'path/to/image/output.png';
+$option = array(
+	"quality" => 80
+);
+
+try {
+	$obj = new DYReImage\DYReImage($source, $destination, $option);
+	$obj->greenImage();
+} catch(\Exception $e) {
+	die("Error: " . $e->getMessage());
+}
+```
+
+
+# Create blue image
+```
+require_once 'path/to/DYReImage/autoload.php';
+
+$source = 'path/to/image/sample.jpg';
+$destination = 'path/to/image/output.png';
+$option = array(
+	"quality" => 80
+);
+
+try {
+	$obj = new DYReImage\DYReImage($source, $destination, $option);
+	$obj->blueImage();
+} catch(\Exception $e) {
+	die("Error: " . $e->getMessage());
+}
+```
 
 
 # License
