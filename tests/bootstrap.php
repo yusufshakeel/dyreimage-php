@@ -2,7 +2,7 @@
 /**
  * file: bootstrap.php
  * author: yusuf shakeel
- * github: https://github.com/yusufshakeel/dyreimage
+ * github: https://github.com/yusufshakeel/dyreimage-php
  * date: 12-feb-2014 wed
  * description: This is the bootstrap file.
  *
