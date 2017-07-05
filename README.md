@@ -5,8 +5,8 @@ This is an image resizing project.
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yusufshakeel/dyreimage-php)
 [![Build Status](https://travis-ci.org/yusufshakeel/dyreimage-php.svg?branch=master)](https://travis-ci.org/yusufshakeel/dyreimage-php)
-[![npm version](https://img.shields.io/badge/npm-v1.0.0-blue.svg)](https://www.npmjs.com/package/dyreimage-php)
-[![Bower](https://img.shields.io/badge/bower-v1.0.0-blue.svg)](https://bower.io/search/?q=dyreimage-php)
+[![npm version](https://img.shields.io/badge/npm-1.1.0-blue.svg)](https://www.npmjs.com/package/dyreimage-php)
+[![Bower](https://img.shields.io/badge/bower-1.1.0-blue.svg)](https://bower.io/search/?q=dyreimage-php)
 
 # Documentation
 [Click here for the documentation.](https://www.dyclassroom.com/dyreimage-php/getting-started)
