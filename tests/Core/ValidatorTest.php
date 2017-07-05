@@ -2,7 +2,7 @@
 /**
  * file: ValidatorTest.php
  * author: yusuf shakeel
- * github: https://github.com/yusufshakeel/dyreimage
+ * github: https://github.com/yusufshakeel/dyreimage-php
  * date: 12-feb-2014 wed
  * description: This is the Validator test file.
  *
@@ -29,7 +29,7 @@
  * SOFTWARE.
  */
 
-namespace DYReImage\Tests;
+namespace DYReImage\Tests\Core;
 
 use DYReImage\Core\Config as Config;
 use DYReImage\Core\Validator as Validator;

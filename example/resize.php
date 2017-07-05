@@ -1,11 +1,11 @@
 <?php
 /**
- * file: DYReImageTest.php
+ * file: resize.php
  * author: yusuf shakeel
- * github: https://github.com/yusufshakeel/dyreimage
+ * github: https://github.com/yusufshakeel/dyreimage-php
  * date: 12-feb-2014 wed
- * description: This is the DYReImage test file.
- *
+ * description: This file contains the resize page.
+ * 
  * MIT License
  *
  * Copyright (c) 2017 Yusuf Shakeel
@@ -29,41 +29,30 @@
  * SOFTWARE.
  */
 
-namespace DYReImage\Tests;
+require_once '../src/DYReImage/autoload.php';
 
-class DYReImageTest extends \PHPUnit_Framework_TestCase {
+$source = __DIR__ . '/../image/sample.jpeg';
+$destination = __DIR__ . '/../image/output.png';
+$option = array(
+		"height" => 200,
+		"width" => "auto",
+		"quality" => 80
+);
+
+try {
 	
-	private $obj;
+	$obj = new DYReImage\DYReImage($source, $destination, $option);
 	
-	private $source;
+	$obj->resize();
 	
-	private $destination;
+	echo "Source: " . $obj->getSource() . "<br>";
+	echo "Destination: " . $obj->getDestination() . "<br>";
+	echo "Option: " . print_r($obj->getOption()) . "<br>";
+	echo "SourceImageDetail: " . print_r($obj->getSourceDetail()) . "<br>";
+	echo "RequiredImageDetail: " . print_r($obj->getRequiredImageDetail()) . "<br>";
 	
-	private $option;
+	echo "Done!";
 	
-	protected function setUp() {
-		
-		$this->source = __DIR__ . '/../image/sample.jpeg';
-		$this->destination = __DIR__ . '/../image/output-test.png';
-		$this->option = array(
-				"height" => 200,
-				"width" => "auto",
-				"quality" => 80
-		);
-		$this->obj = new \DYReImage\DYReImage($this->source, $this->destination, $this->option);
-		
-	}
-	
-	protected function tearDown() {
-		
-		unlink($this->destination);
-		
-	}
-	
-	public function testResize() {
-		
-		$this->assertTrue($this->obj->resize());
-		
-	}
-	
+} catch(\Exception $e) {
+	die("Error: " . $e->getMessage());
 }

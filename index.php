@@ -43,13 +43,13 @@ try {
 	
 	$obj = new DYReImage\DYReImage($source, $destination, $option);
 	
+	$obj->resize();
+	
 	echo "Source: " . $obj->getSource() . "<br>";
 	echo "Destination: " . $obj->getDestination() . "<br>";
 	echo "Option: " . print_r($obj->getOption()) . "<br>";
 	echo "SourceImageDetail: " . print_r($obj->getSourceDetail()) . "<br>";
 	echo "RequiredImageDetail: " . print_r($obj->getRequiredImageDetail()) . "<br>";
-	
-	$obj->resize();
 	
 	echo "Done!";
 	

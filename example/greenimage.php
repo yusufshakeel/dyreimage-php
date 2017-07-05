@@ -1,10 +1,10 @@
 <?php
 /**
- * file: Config.php
+ * file: greenimage.php
  * author: yusuf shakeel
  * github: https://github.com/yusufshakeel/dyreimage-php
  * date: 12-feb-2014 wed
- * description: This is the configuration file.
+ * description: This file contains the greenimage page.
  * 
  * MIT License
  *
@@ -28,56 +28,26 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-namespace DYReImage\Core;
 
-/**
- * The Config class
- */
-class Config {
+require_once '../src/DYReImage/autoload.php';
+
+$source = __DIR__ . '/../image/rubix-cube.jpg';
+$destination = __DIR__ . '/../image/output.png';
+
+try {
 	
-	/**
-	 * The default options for the resizing.
-	 * 
-	 * @var array
-	 */
-	public static $defaultOption = array(
-			"height" => "xs",
-			"width" => "auto",
-			"quality" => 75
-	);
+	$obj = new DYReImage\DYReImage($source, $destination);
 	
-	/**
-	 * The required image values.
-	 * 
-	 * @var array
-	 */
-	public static $RequiredImage = array(
-			
-			// height of the image in pixels
-			"height" => array(
-					"xs" => 100,	//extra small
-					"sm" => 200,	//small
-					"md" => 400,	//medium
-					"lg" => 800,	//large
-					"xl" => 1600	//extra large
-			),
-			
-			// width will be in proportion to the height
-			"width" => array(
-					"auto" => "auto",	//compute width proportional to height
-					"xs" => 100,	//extra small
-					"sm" => 200,	//small
-					"md" => 400,	//medium
-					"lg" => 800,	//large
-					"xl" => 1600	//extra large
-			),
-			
-			// quality of the thumbnail image
-			"quality" => 75,
-				
-			// allowed file extensions
-			"allowedextension" => array("jpg", "jpeg", "png")
-			
-	);
+	$obj->greenImage();
 	
+	echo "Source: " . $obj->getSource() . "<br>";
+	echo "Destination: " . $obj->getDestination() . "<br>";
+	echo "Option: " . print_r($obj->getOption()) . "<br>";
+	echo "SourceImageDetail: " . print_r($obj->getSourceDetail()) . "<br>";
+	echo "RequiredImageDetail: " . print_r($obj->getRequiredImageDetail()) . "<br>";
+	
+	echo "Done!";
+	
+} catch(\Exception $e) {
+	die("Error: " . $e->getMessage());
 }

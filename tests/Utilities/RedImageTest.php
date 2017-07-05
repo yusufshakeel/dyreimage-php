@@ -1,11 +1,11 @@
 <?php
 /**
- * file: Config.php
+ * file: RedImageTest.php
  * author: yusuf shakeel
  * github: https://github.com/yusufshakeel/dyreimage-php
  * date: 12-feb-2014 wed
- * description: This is the configuration file.
- * 
+ * description: This is the RedImage test file.
+ *
  * MIT License
  *
  * Copyright (c) 2017 Yusuf Shakeel
@@ -28,56 +28,53 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-namespace DYReImage\Core;
 
-/**
- * The Config class
- */
-class Config {
+namespace DYReImage\Tests\Core;
+
+class RedImageTest extends \PHPUnit_Framework_TestCase {
 	
-	/**
-	 * The default options for the resizing.
-	 * 
-	 * @var array
-	 */
-	public static $defaultOption = array(
-			"height" => "xs",
-			"width" => "auto",
-			"quality" => 75
-	);
+	private $obj;
+	private $source;
+	private $destination;
+	private $option;
 	
-	/**
-	 * The required image values.
-	 * 
-	 * @var array
-	 */
-	public static $RequiredImage = array(
-			
-			// height of the image in pixels
-			"height" => array(
-					"xs" => 100,	//extra small
-					"sm" => 200,	//small
-					"md" => 400,	//medium
-					"lg" => 800,	//large
-					"xl" => 1600	//extra large
-			),
-			
-			// width will be in proportion to the height
-			"width" => array(
-					"auto" => "auto",	//compute width proportional to height
-					"xs" => 100,	//extra small
-					"sm" => 200,	//small
-					"md" => 400,	//medium
-					"lg" => 800,	//large
-					"xl" => 1600	//extra large
-			),
-			
-			// quality of the thumbnail image
-			"quality" => 75,
-				
-			// allowed file extensions
-			"allowedextension" => array("jpg", "jpeg", "png")
-			
-	);
+	protected function setUp() {
+		
+	}
 	
+	public function tearDown() {
+		unlink($this->destination);
+	}
+	
+	public function testRedImage_jpeg() {
+		
+		$this->source = __DIR__ . '/../../image/superman.jpg';
+		$this->destination = __DIR__ . '/../../image/output.jpg';
+		$this->option = array(
+				"quality" => 80
+		);
+		
+		$this->obj = new \DYReImage\DYReImage($this->source, $this->destination, $this->option);
+		
+		$this->obj->redImage();
+		
+		$this->assertTrue(file_exists($this->destination));
+		
+	}
+	
+	public function testRedImage_png() {
+		
+		$this->source = __DIR__ . '/../../image/superman.png';
+		$this->destination = __DIR__ . '/../../image/output.jpg';
+		$this->option = array(
+				"quality" => 80
+		);
+		
+		$this->obj = new \DYReImage\DYReImage($this->source, $this->destination, $this->option);
+		
+		$this->obj->redImage();
+		
+		$this->assertTrue(file_exists($this->destination));
+		
+	}
 }

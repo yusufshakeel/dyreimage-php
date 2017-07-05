@@ -5,8 +5,8 @@ This is an image resizing project.
 
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/yusufshakeel/dyreimage-php)
 [![Build Status](https://travis-ci.org/yusufshakeel/dyreimage-php.svg?branch=master)](https://travis-ci.org/yusufshakeel/dyreimage-php)
-[![npm version](https://img.shields.io/badge/npm-v1.0.0-blue.svg)](https://www.npmjs.com/package/dyreimage-php)
-[![Bower](https://img.shields.io/badge/bower-v1.0.0-blue.svg)](https://bower.io/search/?q=dyreimage-php)
+[![npm version](https://img.shields.io/badge/npm-1.1.0-blue.svg)](https://www.npmjs.com/package/dyreimage-php)
+[![Bower](https://img.shields.io/badge/bower-1.1.0-blue.svg)](https://bower.io/search/?q=dyreimage-php)
 
 # Documentation
 [Click here for the documentation.](https://www.dyclassroom.com/dyreimage-php/getting-started)
@@ -36,6 +36,9 @@ dyreimage-php/
 │       │   ├── Config.php
 │       │   ├── Helper.php
 │       │   └── Validator.php
+│       ├── Utilities/
+│       │   ├── Image.php
+│       │   └── Resize.php
 │       ├── autoload.php
 │       └── DYReImage.php
 ├── tests/
@@ -74,6 +77,82 @@ try {
 ?>
 ```
 Note! You must have write permission in order to save the resized image in the destination directory.
+
+
+# Create grayscale image
+```
+require_once 'path/to/DYReImage/autoload.php';
+
+$source = 'path/to/image/sample.jpg';
+$destination = 'path/to/image/output.png';
+$option = array(
+	"quality" => 80
+);
+
+try {
+	$obj = new DYReImage\DYReImage($source, $destination, $option);
+	$obj->grayscaleImage();
+} catch(\Exception $e) {
+	die("Error: " . $e->getMessage());
+}
+```
+
+
+# Create red image
+```
+require_once 'path/to/DYReImage/autoload.php';
+
+$source = 'path/to/image/sample.jpg';
+$destination = 'path/to/image/output.png';
+$option = array(
+	"quality" => 80
+);
+
+try {
+	$obj = new DYReImage\DYReImage($source, $destination, $option);
+	$obj->redImage();
+} catch(\Exception $e) {
+	die("Error: " . $e->getMessage());
+}
+```
+
+
+# Create green image
+```
+require_once 'path/to/DYReImage/autoload.php';
+
+$source = 'path/to/image/sample.jpg';
+$destination = 'path/to/image/output.png';
+$option = array(
+	"quality" => 80
+);
+
+try {
+	$obj = new DYReImage\DYReImage($source, $destination, $option);
+	$obj->greenImage();
+} catch(\Exception $e) {
+	die("Error: " . $e->getMessage());
+}
+```
+
+
+# Create blue image
+```
+require_once 'path/to/DYReImage/autoload.php';
+
+$source = 'path/to/image/sample.jpg';
+$destination = 'path/to/image/output.png';
+$option = array(
+	"quality" => 80
+);
+
+try {
+	$obj = new DYReImage\DYReImage($source, $destination, $option);
+	$obj->blueImage();
+} catch(\Exception $e) {
+	die("Error: " . $e->getMessage());
+}
+```
 
 
 # License
