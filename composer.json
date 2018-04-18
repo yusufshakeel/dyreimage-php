@@ -4,7 +4,6 @@
 	"keywords": ["php", "image resizing"],
 	"type": "library",
 	"homepage": "https://github.com/yusufshakeel/dyreimage-php",
-	"license": "MIT License",
 	"authors": [
 		{
 			"name": "Yusuf Shakeel",
