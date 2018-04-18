@@ -16,6 +16,7 @@ This is an image resizing project.
 - Clone the repo: `git clone https://github.com/yusufshakeel/dyreimage-php.git`
 - Install with [Bower](https://bower.io): `bower install dyreimage-php`
 - Install with [npm](https://www.npmjs.com): `npm install dyreimage-php`
+- Install using composer `composer require yusufshakeel/dyreimage-php`
 
 # Requirement
 DYReImage requires the following:
